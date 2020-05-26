@@ -1,0 +1,13 @@
+{
+  "private": true,
+  "scripts": {
+    "dev": "gulp watch"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.26.7",
+    "gulp": "^4.0.2",
+    "gulp-mjml": "^4.0.2",
+    "mjml": "^4.6.3",
+    "prettier": "^2.0.5"
+  }
+}
