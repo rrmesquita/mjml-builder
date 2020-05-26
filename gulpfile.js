@@ -4,12 +4,13 @@ const mjmlEngine = require("mjml");
 const bs = require("browser-sync").create();
 
 const path = {
-  src: "./src/templates/**/*.mjml",
-  dist: "./dist",
+  watchSrc: ["./src/**/*.mjml"],
+  templateSrc: "./src/templates/**/*.mjml",
+  templateDist: "./dist",
 };
 
 const build = function () {
-  return gulp.src(path.src).pipe(mjml(mjmlEngine)).pipe(gulp.dest(path.dist));
+  return gulp.src(path.templateSrc).pipe(mjml(mjmlEngine)).pipe(gulp.dest(path.templateDist));
 };
 
 const watch = function () {
@@ -17,11 +18,11 @@ const watch = function () {
 
   bs.init({
     server: {
-      baseDir: path.dist,
+      baseDir: path.templateDist,
     },
   });
 
-  gulp.watch(path.src, build).on("change", bs.reload);
+  gulp.watch(path.watchSrc, build).on("change", bs.reload);
 };
 
 exports.build = build;
